@@ -25,7 +25,7 @@ const cards = [
 // Second row cards
 const secondaryCards = [
   { title: "Education & Experience", description: "Education & Work Experience", link: `${basePath}/about`, image: educationPic },
-  { title: "Blogs", description: "Read my thoughts", link: `${basePath}/blogs`, image: blogsPic },
+  { title: "Blogs", description: "Read my thoughts", link: `${basePath}`, image: blogsPic },
   { title: "Hackathons", description: "My hackathon experiences", link: `${basePath}/hackathons`, image: hackathonsPic },
 ];
 
@@ -51,6 +51,7 @@ const Home = () => {
           textAlign: "center",
           px: 2,
           pt: 8,
+          pb: 10, // ✅ Added padding-bottom for extra spacing
           position: "relative",
           overflow: "hidden",
         }}
@@ -145,7 +146,7 @@ const Home = () => {
                   boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
                   backgroundColor: "white",
                 }}
-                onClick={() => handleCardClick(card.link)} // ✅ GitHub Pages-safe
+                onClick={() => handleCardClick(card.link)}
               >
                 <CardMedia component="img" height="140" image={card.image} alt={card.title} />
                 <CardContent>
@@ -181,7 +182,7 @@ const Home = () => {
                   boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
                   backgroundColor: "white",
                 }}
-                onClick={() => handleCardClick(card.link)} // ✅ GitHub Pages-safe
+                onClick={() => handleCardClick(card.link)}
               >
                 <CardMedia component="img" height="140" image={card.image} alt={card.title} />
                 <CardContent>
@@ -196,6 +197,9 @@ const Home = () => {
             </motion.div>
           ))}
         </Box>
+
+        {/* ✅ Added small spacer at end for visual breathing room */}
+        <Box sx={{ height: 60 }} />
       </Box>
     </PageWrapper>
   );

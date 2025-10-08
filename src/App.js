@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, BrowserRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 // Import components
@@ -12,8 +12,8 @@ import Contact from "./pages/Contact";
 import Hackathons from "./pages/Hackathons";
 import Blogs from "./pages/Blogs";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
-// Wrapper for animated route transitions
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
@@ -33,13 +33,16 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Navbar />
-      <div style={{ flex: 1 }}>
-        <AnimatedRoutes />
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <ScrollToTop />
+      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <Navbar />
+        <div style={{ flex: 1 }}>
+          <AnimatedRoutes />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </BrowserRouter>
   );
 };
 
