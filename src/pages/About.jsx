@@ -95,6 +95,7 @@ const About = () => {
             <Button variant="contained" color="primary" href="/resume.pdf" target="_blank" sx={{ mt: 2 }}>
               Download Resume
             </Button>
+
           </motion.div>
         </Box>
 

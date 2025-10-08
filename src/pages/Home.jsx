@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Card, CardContent, CardMedia, Divider } from "@mui/material";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/PageWrapper";
 import TypingText from "../components/TypingText";
 import profilePic from "../assets/profile.jpeg";
@@ -9,7 +10,7 @@ import projectsPic from "../assets/projects.png";
 import educationPic from "../assets/education.png"; 
 import blogsPic from "../assets/blog.jpeg"; 
 import hackathonsPic from "../assets/hackathons.png"; 
-import mainprofile_pic from "../assets/mainprofile.jpeg"
+import mainprofile_pic from "../assets/mainprofile.jpeg";
 
 // First row cards
 const cards = [
@@ -21,11 +22,13 @@ const cards = [
 // Second row cards
 const secondaryCards = [
   { title: "Education & Experience", description: "Education & Work Experience", link: "/about", image: educationPic },
-  { title: "Blogs", description: "Read my thoughts", link: "/", image: blogsPic },
+  { title: "Blogs", description: "Read my thoughts", link: "/blogs", image: blogsPic },
   { title: "Hackathons", description: "My hackathon experiences", link: "/hackathons", image: hackathonsPic },
 ];
 
 const Home = () => {
+  const navigate = useNavigate(); // ✅ React Router hook
+
   return (
     <PageWrapper>
       <Box
@@ -88,7 +91,7 @@ const Home = () => {
           </Typography>
         </motion.div>
 
-        {/* Blog / Intro Section */}
+        {/* Profile Section */}
         <Box sx={{ zIndex: 1, maxWidth: 800, width: "100%", mb: 6 }}>
           <Card sx={{ display: "flex", flexDirection: "column", alignItems: "center", boxShadow: 3 }}>
             <CardMedia
@@ -102,7 +105,7 @@ const Home = () => {
                 I'm a passionate Software Engineer with a deep interest in data science and full-stack development. Currently, I'm pursuing my Master's degree in Computer Science at The University of Texas at Arlington.
               </Typography>
               <Typography variant="body1" color="text.secondary" paragraph>
-                I have experience working with various technologies and frameworks, and I'm always eager to learn and grow in the tech industry. In my free time, I enjoy exploring new programming languages, contributing to open-source projects, and staying updated with the latest trends in technology.
+                I have experience working with various technologies and frameworks, and I'm always eager to learn and grow in the tech industry.
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Feel free to explore my portfolio to learn more about my work and projects.
@@ -111,7 +114,7 @@ const Home = () => {
           </Card>
         </Box>
 
-        {/* Divider / Separator */}
+        {/* Divider */}
         <Divider sx={{ width: "60%", borderBottomWidth: 2, borderColor: "rgba(0,0,0,0.2)", mb: 6 }} />
 
         {/* First Row Cards */}
@@ -134,7 +137,7 @@ const Home = () => {
                   boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
                   backgroundColor: "white",
                 }}
-                onClick={() => (window.location.href = card.link)}
+                onClick={() => navigate(card.link)} // ✅ Fixed navigation
               >
                 <CardMedia component="img" height="140" image={card.image} alt={card.title} />
                 <CardContent>
@@ -170,7 +173,7 @@ const Home = () => {
                   boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
                   backgroundColor: "white",
                 }}
-                onClick={() => (window.location.href = card.link)}
+                onClick={() => navigate(card.link)} // ✅ Fixed navigation
               >
                 <CardMedia component="img" height="140" image={card.image} alt={card.title} />
                 <CardContent>
@@ -185,13 +188,6 @@ const Home = () => {
             </motion.div>
           ))}
         </Box>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          style={{ marginTop: 60, zIndex: 1 }}
-        />
       </Box>
     </PageWrapper>
   );
