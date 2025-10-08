@@ -92,10 +92,15 @@ const About = () => {
             <Typography variant="body1" color="text.secondary" paragraph textAlign="center">
               Hi! I’m Snehal Thorat, a passionate Software Engineer and Data Enthusiast. I love building applications that solve real-world problems and exploring new technologies.
             </Typography>
-            <Button variant="contained" color="primary" href="/resume.pdf" target="_blank" sx={{ mt: 2 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              href={`${process.env.PUBLIC_URL}/resume.pdf`}
+              target="_blank"
+              sx={{ mt: 2 }}
+            >
               Download Resume
             </Button>
-
           </motion.div>
         </Box>
 
