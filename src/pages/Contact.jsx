@@ -24,27 +24,40 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Basic validation
+    if (!form.name || !form.email || !form.message) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
     setLoading(true);
 
+    const SERVICE_ID = "service_h11md7l";
+    const TEMPLATE_ID = "template_a7cx3nk"; // Your template ID
+    const PUBLIC_KEY = "qfB59LD2rtgXXnvRz";
+
+    // Send message to YOUR inbox + auto-reply to the sender
     emailjs
       .send(
-        "YOUR_SERVICE_ID", // replace with your Service ID
-        "YOUR_TEMPLATE_ID", // replace with your Template ID
+        SERVICE_ID,
+        TEMPLATE_ID,
         {
-          from_name: form.name,
-          from_email: form.email,
+          name: form.name,
+          email: form.email, // matches {{email}} in template
+          title: "New Contact Message", // optional variable
           message: form.message,
-          to_email: "snehalthorat1512@gmail.com",
+          reply_to: form.email, // so you can reply directly
         },
-        "YOUR_PUBLIC_KEY" // replace with your Public Key
+        PUBLIC_KEY
       )
-      .then((response) => {
+      .then(() => {
         alert("Message sent successfully!");
         setForm({ name: "", email: "", message: "" });
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("EmailJS error:", error);
         alert("Failed to send message. Please try again.");
         setLoading(false);
       });
