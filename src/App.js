@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 // Import components
@@ -33,15 +33,13 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <Router>
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <Navbar />
-        <div style={{ flex: 1 }}>
-          <AnimatedRoutes />
-        </div>
-        <Footer />
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Navbar />
+      <div style={{ flex: 1 }}>
+        <AnimatedRoutes />
       </div>
-    </Router>
+      <Footer />
+    </div>
   );
 };
 
